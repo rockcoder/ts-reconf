@@ -12,8 +12,7 @@ export const skipLibCheckRule: Rule = {
             {
                 ruleId: ruleId,
                 severity: "info",
-                message:
-                    "skipLibCheck skips type checking of declaration files (*.d.ts). This improves build speed but may hide type issues in dependencies.",
+                message: "skipLibCheck skips type checking of declaration files (*.d.ts). This improves build speed but may hide type issues in dependencies. Generally safe for apps, more risky for libraries",
                 category: "explanation"
             }
         ];

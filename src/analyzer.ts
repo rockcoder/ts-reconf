@@ -3,7 +3,16 @@ import type { CompilerOptions } from "typescript";
 import type { Rule, Finding } from "./types.js";
 
 import {
-    legacyOptionRule, strictRedundantRule, skipLibCheckRule, defaultRedundantRule, targetLibConflictRule
+    legacyOptionRule,
+    strictRedundantRule,
+    skipLibCheckRule,
+    defaultRedundantRule,
+    targetLibConflictRule,
+    moduleKindCheckRule,
+    allowJsCheckRule,
+    noEmitOutDirCheckRule,
+    noIncludeOrFilesCheckRule,
+    moduleResolutionMismatchRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -12,6 +21,11 @@ const rules: Rule[] = [
     skipLibCheckRule,
     defaultRedundantRule,
     targetLibConflictRule,
+    moduleKindCheckRule,
+    allowJsCheckRule,
+    noEmitOutDirCheckRule,
+    noIncludeOrFilesCheckRule,
+    moduleResolutionMismatchRule,
 ];
 
 export function analyze(config: CompilerOptions): Finding[] {

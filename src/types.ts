@@ -6,7 +6,8 @@ export type Category =
     | "redundant"
     | "explanation"
     | "legacy"
-    | "conflict";
+    | "conflict"
+    | "suggestion";
 
 export interface Finding {
     ruleId: string;

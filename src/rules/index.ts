@@ -3,3 +3,8 @@ export { strictRedundantRule } from "./strictRedundant.js";
 export { skipLibCheckRule } from "./skipLibCheckExplain.js";
 export { defaultRedundantRule } from "./defaultRedundant.js";
 export { targetLibConflictRule } from "./targetLibConflict.js";
+export { moduleKindCheckRule } from "./moduleTypeCheck.js";
+export { allowJsCheckRule } from "./allowJsCheck.js";
+export { noEmitOutDirCheckRule } from "./noEmitOutDir.js";
+export { noIncludeOrFilesCheckRule } from "./noIncludeOrFiles.js";
+export { moduleResolutionMismatchRule } from "./moduleResolutionMismatch.js";
