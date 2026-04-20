@@ -1,12 +1,16 @@
+import type { CompilerOptions } from "typescript";
+
 import { Rule, Finding } from "../types.js";
 
+const ruleId = "ts.strict.redundant";
+
 export const strictRedundantRule: Rule = {
-    id: "ts.strict.redundant",
+    id: ruleId,
 
     analyze(config): Finding[] {
         if (!config.strict) return [];
 
-        const setByStrictOptions = [
+        const setByStrictOptions: (keyof CompilerOptions)[] = [
             "alwaysStrict",
             "noImplicitAny",
             "noImplicitThis",
@@ -21,7 +25,7 @@ export const strictRedundantRule: Rule = {
         return setByStrictOptions
             .filter(opt => config[opt])
             .map(opt => ({
-                ruleId: "ts.strict.redundant",
+                ruleId: ruleId,
                 severity: "info",
                 message: `${opt} is redundant because strict=true enables it`,
                 category: "redundant"

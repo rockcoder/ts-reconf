@@ -1,6 +1,10 @@
-import { Rule, Finding } from "../types.js";
+import type { CompilerOptions } from "typescript";
 
-const legacyOptions = [
+import type { Rule, Finding } from "../types.js";
+
+const ruleId = "ts.legacy.option";
+
+const legacyOptions: (keyof CompilerOptions)[] = [
     "charset",
     "out",
     "noUncheckedIndexedAccess",
@@ -14,14 +18,15 @@ const legacyOptions = [
     "skipDefaultLibCheck",
 ];
 
+
 export const legacyOptionRule: Rule = {
-    id: "ts.legacy.option",
+    id: ruleId,
 
     analyze(config): Finding[] {
         return legacyOptions
             .filter(opt => opt in config)
             .map(opt => ({
-                ruleId: "ts.legacy.option",
+                ruleId: ruleId,
                 severity: "warn",
                 message: `${opt} is a legacy TypeScript option and should be removed${getAdditionalInfo(opt)}`,
                 category: "legacy"
@@ -29,7 +34,7 @@ export const legacyOptionRule: Rule = {
     }
 };
 
-function getAdditionalInfo(opt: string): string {
+function getAdditionalInfo(opt: keyof CompilerOptions): string {
     switch (opt) {
         case "out": return " (use 'outFile' instead)";
         case "suppressExcessPropertyErrors":
