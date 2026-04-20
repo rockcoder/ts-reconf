@@ -2,11 +2,12 @@ import type { CompilerOptions } from "typescript";
 
 import type { Rule, Finding } from "./types.js";
 
-import { legacyOptionRule, strictRedundantRule } from "./rules/index.js";
+import { legacyOptionRule, strictRedundantRule, skipLibCheckRule } from "./rules/index.js";
 
 const rules: Rule[] = [
     legacyOptionRule,
-    strictRedundantRule
+    strictRedundantRule,
+    skipLibCheckRule,
 ];
 
 export function analyze(config: CompilerOptions): Finding[] {
