@@ -1,0 +1,1 @@
+export { legacyOptionRule } from "./legacyOption.js";
