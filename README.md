@@ -26,6 +26,31 @@ Developers often:
 
 ---
 
+## Installation & usage
+
+```bash
+npm install -g ts-reconf
+ts-reconf analyze [./tsconfig.json]
+```
+
+## Run without installation
+
+You can run `ts-reconf` instantly without installing it globally:
+
+```bash
+npx ts-reconf analyze
+```
+
+## Run from the source
+
+Clone the repository and run the CLI locally:
+
+```bash
+npx tsx src/cli.ts analyze [./tsconfig.json]
+```
+
+---
+
 ## Example
 
 ### Input
@@ -49,15 +74,6 @@ Developers often:
 - `skipLibCheck` skips type checking of declaration files (*.d.ts)
   → improves build speed but may hide type issues
 
----
-
-## Run from the source
-
-Clone the repository and run the CLI locally:
-
-```bash
-npx tsx src/cli.ts analyze [./tsconfig.json]
-```
 
 ---
 
