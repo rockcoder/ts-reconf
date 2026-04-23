@@ -1,6 +1,6 @@
 {
   "name": "ts-reconf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Understand and simplify (re-conf) your tsconfig.json",
   "main": "index.js",
   "type": "module",
@@ -12,6 +12,10 @@
     "README.md",
     "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockcoder/ts-reconf.git"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/cli.ts",
