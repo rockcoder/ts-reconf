@@ -1,6 +1,4 @@
-import type { CompilerOptions } from "typescript";
-
-import type { Rule, Finding } from "./types.js";
+import type { Rule, Finding, AnalysisContext } from "./types.js";
 
 import {
     legacyOptionRule,
@@ -13,6 +11,7 @@ import {
     noEmitOutDirCheckRule,
     noIncludeOrFilesCheckRule,
     moduleResolutionMismatchRule,
+    declarationNoEmitCheckRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -26,8 +25,9 @@ const rules: Rule[] = [
     noEmitOutDirCheckRule,
     noIncludeOrFilesCheckRule,
     moduleResolutionMismatchRule,
+    declarationNoEmitCheckRule,
 ];
 
-export function analyze(config: CompilerOptions): Finding[] {
+export function analyze(config: AnalysisContext): Finding[] {
     return rules.flatMap(rule => rule.analyze(config));
 }
