@@ -1,15 +1,15 @@
-import type { CompilerOptions } from "typescript";
-import type { Rule, Finding } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.noEmitOutDir.check";
 
 export const noEmitOutDirCheckRule: Rule = {
     id: ruleId,
 
-    analyze(config: CompilerOptions): Finding[] {
+    analyze(config: AnalysisContext): Finding[] {
+        const compilerOptions = config.compilerOptions ?? {};
 
-        const noEmit = config.noEmit;
-        const outDir = config.outDir;
+        const noEmit = compilerOptions.noEmit;
+        const outDir = compilerOptions.outDir;
 
         const findings: Finding[] = [];
 

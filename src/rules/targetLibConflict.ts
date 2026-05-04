@@ -1,5 +1,5 @@
-import type { Rule, Finding } from "../types.js";
-import { ScriptTarget, type CompilerOptions } from "typescript";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
+import { ScriptTarget } from "typescript";
 
 const ruleId = "ts.target-lib.conflict";
 
@@ -61,8 +61,8 @@ function getHighestLib(libVersions: string[]): string | null {
 export const targetLibConflictRule: Rule = {
     id: ruleId,
 
-    analyze(config: CompilerOptions): Finding[] {
-        const options = config ?? {};
+    analyze(config: AnalysisContext): Finding[] {
+        const options = config.compilerOptions ?? {};
 
         const target = options.target;
         const libs = options.lib;

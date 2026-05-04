@@ -1,14 +1,16 @@
 import type { CompilerOptions } from "typescript";
 
-import { Rule, Finding } from "../types.js";
+import { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.strict.redundant";
 
 export const strictRedundantRule: Rule = {
     id: ruleId,
 
-    analyze(config): Finding[] {
-        if (!config.strict) return [];
+    analyze(config: AnalysisContext): Finding[] {
+        const compilerOptions = config.compilerOptions ?? {};
+
+        if (!compilerOptions.strict) return [];
 
         const setByStrictOptions: (keyof CompilerOptions)[] = [
             "alwaysStrict",
@@ -23,7 +25,7 @@ export const strictRedundantRule: Rule = {
         ];
 
         return setByStrictOptions
-            .filter(opt => config[opt])
+            .filter(opt => compilerOptions[opt])
             .map(opt => ({
                 ruleId: ruleId,
                 severity: "info",

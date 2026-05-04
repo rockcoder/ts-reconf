@@ -1,12 +1,13 @@
-import { Rule, Finding } from "../types.js";
+import { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.skipLibCheck.explain";
 
 export const skipLibCheckRule: Rule = {
     id: ruleId,
 
-    analyze(config): Finding[] {
-        if (!("skipLibCheck" in config)) return [];
+    analyze(config: AnalysisContext): Finding[] {
+        const compilerOptions = config.compilerOptions ?? {};
+        if (!("skipLibCheck" in compilerOptions)) return [];
 
         return [
             {

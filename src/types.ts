@@ -16,7 +16,17 @@ export interface Finding {
     category: Category;
 }
 
+export interface AnalysisContext {
+    compilerOptions: CompilerOptions;
+    rawConfig: {
+        include?: string[];
+        exclude?: string[];
+        files?: string[];
+        extends?: string;
+    };
+}
+
 export interface Rule {
     id: string;
-    analyze(config: CompilerOptions): Finding[];
+    analyze(config: AnalysisContext): Finding[];
 }

@@ -1,15 +1,15 @@
-import type { CompilerOptions } from "typescript";
-import type { Rule, Finding } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.noIncludeOrFiles.check";
 
 export const noIncludeOrFilesCheckRule: Rule = {
     id: ruleId,
 
-    analyze(config: CompilerOptions): Finding[] {
-        const include = config.include;
-        const files = config.files;
-        const exclude = config.exclude;
+    analyze(config: AnalysisContext): Finding[] {
+        const rawConfig = config.rawConfig ?? {};
+        const include = rawConfig.include;
+        const files = rawConfig.files;
+        const exclude = rawConfig.exclude;
 
         const findings: Finding[] = [];
 

@@ -1,7 +1,9 @@
 import ts, { CompilerOptions } from "typescript";
 import path from "path";
 
-export function loadTsConfig(tsconfigPath: string): CompilerOptions {
+import type { AnalysisContext } from "./types.js";
+
+export function loadTsConfig(tsconfigPath: string): AnalysisContext {
     const configFile = ts.readConfigFile(tsconfigPath, ts.sys.readFile);
 
     if (configFile.error) {
@@ -21,5 +23,8 @@ export function loadTsConfig(tsconfigPath: string): CompilerOptions {
         configDir
     );
 
-    return parsedTSConfig.options;
+    return {
+        compilerOptions: parsedTSConfig.options,
+        rawConfig: configFile.config
+    };
 }

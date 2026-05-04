@@ -55,9 +55,10 @@ export const defaultRedundantRule: Rule = {
 
     analyze(config): Finding[] {
         const findings: Finding[] = [];
+        const compilerOptions = config.compilerOptions;
 
         for (const [option, defaultValue] of Object.entries(DEFAULTS)) {
-            if (option in config && isEqual(config[option], defaultValue)) {
+            if (option in compilerOptions && isEqual(compilerOptions[option], defaultValue)) {
                 findings.push({
                     ruleId: ruleId,
                     severity: "info",

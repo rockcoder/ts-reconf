@@ -1,6 +1,6 @@
 import type { CompilerOptions } from "typescript";
 
-import type { Rule, Finding } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.legacy.option";
 
@@ -21,9 +21,10 @@ const legacyOptions: (keyof CompilerOptions)[] = [
 export const legacyOptionRule: Rule = {
     id: ruleId,
 
-    analyze(config): Finding[] {
+    analyze(config: AnalysisContext): Finding[] {
+        const compilerOptions = config.compilerOptions;
         return legacyOptions
-            .filter(opt => opt in config)
+            .filter(opt => opt in compilerOptions)
             .map(opt => ({
                 ruleId: ruleId,
                 severity: "warn",

@@ -1,13 +1,13 @@
-import type { CompilerOptions } from "typescript";
-import type { Rule, Finding } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.module.check";
 
 export const moduleKindCheckRule: Rule = {
     id: ruleId,
-    analyze(config: CompilerOptions): Finding[] {
+    analyze(config: AnalysisContext): Finding[] {
 
-        const module = config.module;
+        const compilerOptions = config.compilerOptions ?? {};
+        const module = compilerOptions.module;
 
         if (!module) {
             return [];

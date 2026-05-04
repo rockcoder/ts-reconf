@@ -1,13 +1,13 @@
-import { ModuleKind, ModuleResolutionKind, type CompilerOptions } from "typescript";
-import type { Rule, Finding } from "../types.js";
+import { ModuleKind, ModuleResolutionKind } from "typescript";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.module-resolution.mismatch";
 
 export const moduleResolutionMismatchRule: Rule = {
     id: ruleId,
 
-    analyze(config: CompilerOptions): Finding[] {
-        const options = config ?? {};
+    analyze(config: AnalysisContext): Finding[] {
+        const options = config.compilerOptions ?? {};
 
         const module = options.module;
         const moduleResolution = options.moduleResolution;

@@ -1,13 +1,12 @@
-import type { CompilerOptions } from "typescript";
-import type { Rule, Finding } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.allowJs.check";
 
 export const allowJsCheckRule: Rule = {
     id: ruleId,
-    analyze(config: CompilerOptions): Finding[] {
+    analyze(config: AnalysisContext): Finding[] {
 
-        const allowJs = config.allowJs;
+        const allowJs = config.compilerOptions.allowJs;
 
         if (!allowJs) {
             return [];
