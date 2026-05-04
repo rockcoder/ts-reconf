@@ -1,5 +1,5 @@
 import type { Rule, Finding } from "../types.js";
-import type { CompilerOptions } from "typescript";
+import { ScriptTarget, type CompilerOptions } from "typescript";
 
 const ruleId = "ts.target-lib.conflict";
 
@@ -71,7 +71,7 @@ export const targetLibConflictRule: Rule = {
             return [];
         }
 
-        const targetOrder = Number(target);
+        const targetOrder = getTargetIndex(ScriptTarget[target]);
 
         const libVersions = extractLibVersions(libs);
 

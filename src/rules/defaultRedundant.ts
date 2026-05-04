@@ -8,8 +8,7 @@ const ruleId = "ts.default.redundant";
  */
 const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     newLine: "lf",
-    chartset: "utf8",
-    importsNotUsedAsValues: "remove",
+    charset: "utf8",
     moduleDetection: "auto",
     reactNamespace: "React",
     removeComments: false,
@@ -32,7 +31,6 @@ const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     rewriteRelativeImportExtensions: false,
     // Interop Constraints
     esModuleInterop: false,
-    forceConsistentCasingInFileNames: true,
     isolatedDeclarations: false,
     isolatedModules: false,
     preserveSymlinks: false,
@@ -47,18 +45,6 @@ const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     noLib: false,
     target: "es5",
 };
-
-/*
-// defaults to consider?
-{
-    allowJs: false,
-    declaration: false,
-    incremental: false,
-    isolatedModules: false,
-    "esModuleInterop": false,
-    "skipLibCheck": false,
-}
-*/
 
 function isEqual(a: unknown, b: unknown): boolean {
     return JSON.stringify(a) === JSON.stringify(b);

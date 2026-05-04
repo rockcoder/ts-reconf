@@ -7,12 +7,11 @@ const ruleId = "ts.legacy.option";
 const legacyOptions: (keyof CompilerOptions)[] = [
     "charset",
     "out",
-    "noUncheckedIndexedAccess",
     "importsNotUsedAsValues",
     "keyofStringsOnly",
     "noStrictGenericChecks",
     "noImplicitUseStrict",
-    "preserveSymlinks",
+    "preserveValueImports",
     "suppressExcessPropertyErrors",
     "suppressImplicitAnyIndexErrors",
     "skipDefaultLibCheck",
