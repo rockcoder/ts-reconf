@@ -12,6 +12,7 @@ import {
     noIncludeOrFilesCheckRule,
     moduleResolutionMismatchRule,
     declarationNoEmitCheckRule,
+    verbatimModuleIsolatedModulesRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -26,6 +27,7 @@ const rules: Rule[] = [
     noIncludeOrFilesCheckRule,
     moduleResolutionMismatchRule,
     declarationNoEmitCheckRule,
+    verbatimModuleIsolatedModulesRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

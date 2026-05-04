@@ -9,3 +9,4 @@ export { noEmitOutDirCheckRule } from "./noEmitOutDir.js";
 export { noIncludeOrFilesCheckRule } from "./noIncludeOrFiles.js";
 export { moduleResolutionMismatchRule } from "./moduleResolutionMismatch.js";
 export { declarationNoEmitCheckRule } from "./declarationNoEmit.js";
+export { verbatimModuleIsolatedModulesRule } from "./verbatimModuleIsolatedModules.js";
