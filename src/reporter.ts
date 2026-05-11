@@ -20,7 +20,7 @@ export function toMarkdown(findings: Finding[], file?: string): string {
 function groupByCategory(findings: Finding[]): Record<string, Finding[]> {
     const groups: Record<string, Finding[]> = {};
 
-    for (const finding of findings) {
+    for (const finding of findings.sort((a, b) => a.category.localeCompare(b.category))) {
         if (!groups[finding.category]) {
             groups[finding.category] = [];
         }

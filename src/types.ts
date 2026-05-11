@@ -3,11 +3,11 @@ import type { CompilerOptions } from "typescript";
 export type Severity = "info" | "warn" | "error";
 
 export type Category =
-    | "redundant"
-    | "explanation"
-    | "legacy"
     | "conflict"
-    | "suggestion";
+    | "legacy"
+    | "redundant"
+    | "suggestion"
+    | "explanation";
 
 export interface Finding {
     ruleId: string;

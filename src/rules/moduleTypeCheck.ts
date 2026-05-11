@@ -1,3 +1,4 @@
+import { ModuleKind } from "typescript";
 import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.module.check";
@@ -13,8 +14,8 @@ export const moduleKindCheckRule: Rule = {
             return [];
         }
 
-        const isCommonJS = module === 1;
-        const isESM = module > 4;
+        const isCommonJS = module === ModuleKind.CommonJS;
+        const isESM = module >= ModuleKind.ES2015;
         const findings: Finding[] = [];
 
         if (isCommonJS) {

@@ -14,16 +14,40 @@ if (command !== "analyze" && fileArg) {
 const file = fileArg ?? (command?.endsWith(".json") ? command : undefined) ?? "tsconfig.json";
 
 try {
+
+    // --version or -v
+    if (process.argv.includes("--version") || process.argv.includes("-v")) {
+        const pkg = await import("../package.json", {
+            with: { type: "json" }
+        });
+        console.log(`ts-reconf version ${pkg.default.version}`);
+        process.exit(0);
+    }
+
+    // --help or -h
+    if (process.argv.includes("--help") || process.argv.includes("-h")) {
+        console.log("Usage: ts-reconf analyze [tsconfig.json]");
+        console.log("Options:");
+        console.log("  --help, -h                   Show help");
+        console.log("  --version, -v                Show version");
+        console.log("  --output-markdown, -o-md     Specify output format (pretty (default) or markdown)");
+        process.exit(0);
+    }
+
     const config = loadTsConfig(file);
 
     const findings = analyze(config);
 
-    const compactOuput = false;
+    // `--output-pretty` (default) or `--output-markdown`
+    const compactOutput = process.argv.includes("--output-markdown") || process.argv.includes("-o-md");
 
-    const report = compactOuput ? toMarkdown(findings, file) : toPrettyOutput(findings, file);
+    const report = compactOutput ? toMarkdown(findings, file) : toPrettyOutput(findings, file);
 
     console.log(report);
 
+    if (findings.some(f => f.severity === "error")) {
+        process.exit(1);
+    }
 } catch (err: unknown) {
     if (err instanceof Error) {
         console.error("Error:", err.message);

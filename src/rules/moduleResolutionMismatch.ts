@@ -29,7 +29,7 @@ export const moduleResolutionMismatchRule: Rule = {
                 return;
             }
 
-            if (module === 199 && moduleResolution !== 99 || module === 100 && moduleResolution !== 3) {
+            if (module === ModuleKind.NodeNext && moduleResolution !== ModuleResolutionKind.NodeNext || module === ModuleKind.Node16 && moduleResolution !== ModuleResolutionKind.Node16) {
                 findings.push({
                     ruleId: ruleId,
                     category: "conflict",
