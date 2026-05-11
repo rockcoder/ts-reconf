@@ -13,6 +13,9 @@ import {
     moduleResolutionMismatchRule,
     declarationNoEmitCheckRule,
     verbatimModuleIsolatedModulesRule,
+    verbatimModuleSyntaxCheckRule,
+    allowSyntheticDefaultImportsRule,
+    noUncheckedIndexedAccessRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -28,6 +31,9 @@ const rules: Rule[] = [
     moduleResolutionMismatchRule,
     declarationNoEmitCheckRule,
     verbatimModuleIsolatedModulesRule,
+    verbatimModuleSyntaxCheckRule,
+    allowSyntheticDefaultImportsRule,
+    noUncheckedIndexedAccessRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

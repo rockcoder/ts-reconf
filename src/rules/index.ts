@@ -10,3 +10,6 @@ export { noIncludeOrFilesCheckRule } from "./noIncludeOrFiles.js";
 export { moduleResolutionMismatchRule } from "./moduleResolutionMismatch.js";
 export { declarationNoEmitCheckRule } from "./declarationNoEmit.js";
 export { verbatimModuleIsolatedModulesRule } from "./verbatimModuleIsolatedModules.js";
+export { verbatimModuleSyntaxCheckRule } from "./moduleVerbatimModuleSyntaxCheck.js";
+export { allowSyntheticDefaultImportsRule } from "./allowSyntheticDefaultImportsCheck.js";
+export { noUncheckedIndexedAccessRule } from "./noUncheckedIndexedAccessCheck.js";
