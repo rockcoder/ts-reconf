@@ -16,6 +16,7 @@ import {
     verbatimModuleSyntaxCheckRule,
     allowSyntheticDefaultImportsRule,
     noUncheckedIndexedAccessRule,
+    forceConsistentCasingInFileNamesRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -34,6 +35,7 @@ const rules: Rule[] = [
     verbatimModuleSyntaxCheckRule,
     allowSyntheticDefaultImportsRule,
     noUncheckedIndexedAccessRule,
+    forceConsistentCasingInFileNamesRule
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

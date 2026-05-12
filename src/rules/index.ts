@@ -13,3 +13,4 @@ export { verbatimModuleIsolatedModulesRule } from "./verbatimModuleIsolatedModul
 export { verbatimModuleSyntaxCheckRule } from "./moduleVerbatimModuleSyntaxCheck.js";
 export { allowSyntheticDefaultImportsRule } from "./allowSyntheticDefaultImportsCheck.js";
 export { noUncheckedIndexedAccessRule } from "./noUncheckedIndexedAccessCheck.js";
+export { forceConsistentCasingInFileNamesRule } from "./forceConsistentCasing.js";
