@@ -1,4 +1,4 @@
-import { Rule, Finding, AnalysisContext } from "../types.js";
+import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.skipLibCheck.explain";
 

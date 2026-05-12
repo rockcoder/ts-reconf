@@ -1,4 +1,4 @@
-import { Finding } from "./types.js";
+import type { Finding } from "./types.js";
 
 const NO_ISSUES_FOUND_MSG = "## Looks good! 🎉 No issues found ✔\n";
 
@@ -24,7 +24,7 @@ function groupByCategory(findings: Finding[]): Record<string, Finding[]> {
         if (!groups[finding.category]) {
             groups[finding.category] = [];
         }
-        groups[finding.category].push(finding);
+        groups[finding.category]?.push(finding);
     }
 
     return groups;

@@ -1,4 +1,4 @@
-import ts, { CompilerOptions } from "typescript";
+import ts from "typescript";
 import path from "path";
 
 import type { AnalysisContext } from "./types.js";
