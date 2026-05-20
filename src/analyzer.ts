@@ -19,6 +19,7 @@ import {
     forceConsistentCasingInFileNamesRule,
     moduleResolutionOutdatedRule,
     emitDeclarationOnlyRule,
+    legacyJsxTransformCheckRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -40,6 +41,7 @@ const rules: Rule[] = [
     forceConsistentCasingInFileNamesRule,
     moduleResolutionOutdatedRule,
     emitDeclarationOnlyRule,
+    legacyJsxTransformCheckRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

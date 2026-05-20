@@ -1,4 +1,3 @@
-import { ModuleResolutionKind } from "typescript";
 import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.emitDeclarationOnly.noDeclaration";
