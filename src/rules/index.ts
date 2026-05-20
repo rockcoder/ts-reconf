@@ -15,3 +15,4 @@ export { allowSyntheticDefaultImportsRule } from "./allowSyntheticDefaultImports
 export { noUncheckedIndexedAccessRule } from "./noUncheckedIndexedAccessCheck.js";
 export { forceConsistentCasingInFileNamesRule } from "./forceConsistentCasing.js";
 export { moduleResolutionOutdatedRule } from "./moduleResolutionOutdated.js";
+export { emitDeclarationOnlyRule } from "./emitDeclarationOnly.js";

@@ -18,6 +18,7 @@ import {
     noUncheckedIndexedAccessRule,
     forceConsistentCasingInFileNamesRule,
     moduleResolutionOutdatedRule,
+    emitDeclarationOnlyRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -38,6 +39,7 @@ const rules: Rule[] = [
     noUncheckedIndexedAccessRule,
     forceConsistentCasingInFileNamesRule,
     moduleResolutionOutdatedRule,
+    emitDeclarationOnlyRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
