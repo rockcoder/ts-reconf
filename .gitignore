@@ -1,4 +1,9 @@
-node_modules
-dist
-test-files
-.vscode
+node_modules/
+dist/
+.test-tsconfig/
+.test-integration/
+*.log
+.DS_Store
+.coverage/
+coverage/
+.vitest/
