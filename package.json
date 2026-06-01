@@ -1,6 +1,6 @@
 {
   "name": "ts-reconf",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Understand and simplify (re-conf) your tsconfig.json",
   "main": "index.js",
   "type": "module",
@@ -42,8 +42,8 @@
   },
   "devDependencies": {
     "@types/node": "25.9.1",
-    "@vitest/coverage-v8": "^1.0.4",
+    "@vitest/coverage-v8": "4.1.8",
     "tsx": "4.22.3",
-    "vitest": "^1.0.4"
+    "vitest": "4.1.8"
   }
 }
