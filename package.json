@@ -1,6 +1,6 @@
 {
   "name": "ts-reconf",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Understand and simplify (re-conf) your tsconfig.json",
   "main": "index.js",
   "type": "module",
@@ -21,11 +21,13 @@
     "dev": "tsx src/cli.ts",
     "clean": "rm -rf dist",
     "start": "node dist/cli.js",
-    "test": "echo \"Todo: write tests\" && exit 1",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "prepublishOnly": "npm run clean && npm run build"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "keywords": [
     "typescript",
@@ -40,6 +42,8 @@
   },
   "devDependencies": {
     "@types/node": "25.9.1",
-    "tsx": "4.22.3"
+    "@vitest/coverage-v8": "4.1.8",
+    "tsx": "4.22.3",
+    "vitest": "4.1.8"
   }
 }
