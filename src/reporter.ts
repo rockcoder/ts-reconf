@@ -1,6 +1,12 @@
-import type { Finding } from "./types.js";
+import type { Finding, Severity } from "./types.js";
 
 const NO_ISSUES_FOUND_MSG = "## Looks good! 🎉 No issues found ✔\n";
+
+const SeverityIcons: Map<Severity, string> = new Map<Severity, string>([
+    ["info", "ℹ"],
+    ["warn", "⚠"],
+    ["error", "✖"]
+]);
 
 export function toMarkdown(findings: Finding[], file?: string): string {
     const lines = [`## tsconfig findings for ${file ?? ""}:\n`];
@@ -53,7 +59,7 @@ export function toPrettyOutput(findings: Finding[], file?: string): string {
         lines.push(`${title} (${items.length})`);
 
         for (const item of items) {
-            lines.push(`  • ${item.message}`);
+            lines.push(`  • ${SeverityIcons.get(item.severity)} ${item.message}`);
         }
 
         lines.push("");

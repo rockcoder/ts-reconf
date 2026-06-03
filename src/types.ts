@@ -23,6 +23,7 @@ export interface AnalysisContext {
         exclude?: string[];
         files?: string[];
         extends?: string;
+        compileOnSave?: boolean;
     };
 }
 
