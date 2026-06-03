@@ -17,3 +17,4 @@ export { forceConsistentCasingInFileNamesRule } from "./forceConsistentCasing.js
 export { moduleResolutionOutdatedRule } from "./moduleResolutionOutdated.js";
 export { emitDeclarationOnlyRule } from "./emitDeclarationOnly.js";
 export { legacyJsxTransformCheckRule } from "./legacyJsxTransformCheck.js";
+export { declarationMapCheckRule } from "./declarationMapCheck.js"

@@ -20,6 +20,7 @@ import {
     moduleResolutionOutdatedRule,
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
+    declarationMapCheckRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -42,6 +43,7 @@ const rules: Rule[] = [
     moduleResolutionOutdatedRule,
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
+    declarationMapCheckRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
