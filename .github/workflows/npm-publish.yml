@@ -29,4 +29,5 @@ jobs:
       - run: npm test
 
       # - run: npm publish --provenance
-      - run: npm publish --dry-run
+      - run: npm publish --provenance --tag beta
+      # - run: npm publish --dry-run
