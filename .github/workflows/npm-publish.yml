@@ -27,7 +27,12 @@ jobs:
       - run: npm ci
 
       - run: npm test
-      
+
+      - name: Check package metadata
+        run: |
+          npm pkg get name version
+          npm view "$(npm pkg get name --workspaces=false | tr -d '"')" version
+    
       - name: Debug publish context
         run: |
           echo "Repository: $GITHUB_REPOSITORY"
@@ -38,5 +43,5 @@ jobs:
           npm config get registry
           npm pkg get name version
       # - run: npm publish --provenance
-      - run: npm publish --provenance --tag beta
+      - run: npm publish --tag beta
       # - run: npm publish --dry-run
