@@ -33,8 +33,10 @@ jobs:
           echo "Repository: $GITHUB_REPOSITORY"
           echo "Workflow: $GITHUB_WORKFLOW"
           echo "Ref: $GITHUB_REF"
+          node --version
+          npm --version
+          npm config get registry
           npm pkg get name version
-    
       # - run: npm publish --provenance
       - run: npm publish --provenance --tag beta
       # - run: npm publish --dry-run
