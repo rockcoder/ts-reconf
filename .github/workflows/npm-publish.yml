@@ -27,8 +27,9 @@ jobs:
       - run: npm ci
 
       - run: npm test
-
-      - run: |
+      
+      - name: Debug publish context
+        run: |
           echo "Repository: $GITHUB_REPOSITORY"
           echo "Workflow: $GITHUB_WORKFLOW"
           echo "Ref: $GITHUB_REF"
