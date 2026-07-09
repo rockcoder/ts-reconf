@@ -1,6 +1,6 @@
 {
   "name": "ts-reconf",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Understand and simplify (re-conf) your tsconfig.json",
   "main": "index.js",
   "type": "module",
