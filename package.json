@@ -1,11 +1,11 @@
 {
   "name": "ts-reconf",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Understand and simplify (re-conf) your tsconfig.json",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "ts-reconf": "./dist/cli.js"
+    "ts-reconf": "dist/cli.js"
   },
   "files": [
     "dist",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rockcoder/ts-reconf.git"
+    "url": "git+https://github.com/rockcoder/ts-reconf.git"
   },
   "scripts": {
     "build": "tsc",
