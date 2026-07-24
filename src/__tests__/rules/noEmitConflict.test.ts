@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { noEmitConflictRule } from '../noEmitConflict.js';
+import { noEmitConflictRule } from '../../rules/noEmitConflict.js';
 import type { AnalysisContext } from '../../types.js';
 
 describe('noEmitConflict', () => {
