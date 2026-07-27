@@ -42,10 +42,9 @@ describe('pathsWithoutBaseUrl', () => {
     };
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
-    console.log(findings, findings[0].message); // Log the message for debugging
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('error');
-    expect(findings[0].category).toBe('conflict');
+    expect(findings[0]?.severity).toBe('error');
+    expect(findings[0]?.category).toBe('conflict');
   });
 
   it('should detect suggestion when baseUrl is set but paths is not', () => {
@@ -59,10 +58,10 @@ describe('pathsWithoutBaseUrl', () => {
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('info');
-    expect(findings[0].message).toContain('baseUrl is set to "."');
-    expect(findings[0].message).toContain('no paths are configured');
-    expect(findings[0].category).toBe('suggestion');
+    expect(findings[0]?.severity).toBe('info');
+    expect(findings[0]?.message).toContain('baseUrl is set to "."');
+    expect(findings[0]?.message).toContain('no paths are configured');
+    expect(findings[0]?.category).toBe('suggestion');
   });
 
   it('should detect suggestion when baseUrl is set but paths is empty', () => {
@@ -77,8 +76,8 @@ describe('pathsWithoutBaseUrl', () => {
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('info');
-    expect(findings[0].message).toContain('baseUrl is set to "src"');
+    expect(findings[0]?.severity).toBe('info');
+    expect(findings[0]?.message).toContain('baseUrl is set to "src"');
   });
 
   it('should have correct rule id', () => {
@@ -93,7 +92,7 @@ describe('pathsWithoutBaseUrl', () => {
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
-    expect(findings[0].ruleId).toBe('ts.paths-baseurl.conflict');
+    expect(findings[0]?.ruleId).toBe('ts.paths-baseurl.conflict');
   });
 
   it('should handle undefined compilerOptions gracefully', () => {
@@ -137,7 +136,7 @@ describe('pathsWithoutBaseUrl', () => {
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
-    expect(findings[0].message).toContain('"baseUrl": "."');
+    expect(findings[0]?.message).toContain('"baseUrl": "."');
   });
 
   it('should only suggest removing baseUrl if paths is truly empty', () => {
@@ -152,7 +151,7 @@ describe('pathsWithoutBaseUrl', () => {
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].message).toContain('remove baseUrl to simplify');
+    expect(findings[0]?.message).toContain('remove baseUrl to simplify');
   });
 
   it('should return error not suggestion when paths is set without baseUrl', () => {

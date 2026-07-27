@@ -43,11 +43,11 @@ describe('noEmitConflict', () => {
     const findings = noEmitConflictRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('error');
-    expect(findings[0].message).toContain('noEmit');
-    expect(findings[0].message).toContain('outDir');
-    expect(findings[0].message).toContain('contradictory');
-    expect(findings[0].category).toBe('conflict');
+    expect(findings[0]?.severity).toBe('error');
+    expect(findings[0]?.message).toContain('noEmit');
+    expect(findings[0]?.message).toContain('outDir');
+    expect(findings[0]?.message).toContain('contradictory');
+    expect(findings[0]?.category).toBe('conflict');
   });
 
   it('should detect conflict when noEmit is true and outFile is set', () => {
@@ -62,9 +62,9 @@ describe('noEmitConflict', () => {
     const findings = noEmitConflictRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('error');
-    expect(findings[0].message).toContain('noEmit');
-    expect(findings[0].message).toContain('outFile');
+    expect(findings[0]?.severity).toBe('error');
+    expect(findings[0]?.message).toContain('noEmit');
+    expect(findings[0]?.message).toContain('outFile');
   });
 
   it('should detect conflict when noEmit is true and declaration is true', () => {
@@ -79,9 +79,9 @@ describe('noEmitConflict', () => {
     const findings = noEmitConflictRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('error');
-    expect(findings[0].message).toContain('noEmit');
-    expect(findings[0].message).toContain('declaration');
+    expect(findings[0]?.severity).toBe('error');
+    expect(findings[0]?.message).toContain('noEmit');
+    expect(findings[0]?.message).toContain('declaration');
   });
 
   it('should detect conflict when noEmit is true and declarationDir is set', () => {
@@ -96,9 +96,9 @@ describe('noEmitConflict', () => {
     const findings = noEmitConflictRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0].severity).toBe('warn');
-    expect(findings[0].message).toContain('noEmit');
-    expect(findings[0].message).toContain('declarationDir');
+    expect(findings[0]?.severity).toBe('warn');
+    expect(findings[0]?.message).toContain('noEmit');
+    expect(findings[0]?.message).toContain('declarationDir');
   });
 
   it('should detect multiple conflicts when noEmit is true with multiple conflicting options', () => {
@@ -131,7 +131,7 @@ describe('noEmitConflict', () => {
 
     const findings = noEmitConflictRule.analyze(config);
 
-    expect(findings[0].ruleId).toBe('ts.noemit.conflict');
+    expect(findings[0]?.ruleId).toBe('ts.noemit.conflict');
   });
 
   it('should include specific file paths in error messages', () => {
@@ -145,7 +145,7 @@ describe('noEmitConflict', () => {
 
     const findings = noEmitConflictRule.analyze(config);
 
-    expect(findings[0].message).toContain('custom/dist');
+    expect(findings[0]?.message).toContain('custom/dist');
   });
 
   it('should handle empty compilerOptions gracefully', () => {
