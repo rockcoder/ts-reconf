@@ -21,6 +21,7 @@ import {
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    pathsWithoutBaseUrlRule,
     outDirRootDirConflictRule,
     noEmitConflictRule,
 } from "./rules/index.js";
@@ -46,6 +47,7 @@ const rules: Rule[] = [
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    pathsWithoutBaseUrlRule,
     outDirRootDirConflictRule,
     noEmitConflictRule,
 ];

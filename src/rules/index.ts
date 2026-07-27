@@ -18,6 +18,7 @@ export { moduleResolutionOutdatedRule } from "./moduleResolutionOutdated.js";
 export { emitDeclarationOnlyRule } from "./emitDeclarationOnly.js";
 export { legacyJsxTransformCheckRule } from "./legacyJsxTransformCheck.js";
 export { declarationMapCheckRule } from "./declarationMapCheck.js";
+export { pathsWithoutBaseUrlRule } from "./pathsWithoutBaseUrl.js";
 export { noEmitConflictRule } from "./noEmitConflict.js";
 export { outDirRootDirConflictRule } from "./outDirRootDirConflict.js";
 
