@@ -21,6 +21,7 @@ import {
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    pathsWithoutBaseUrlRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -44,6 +45,7 @@ const rules: Rule[] = [
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    pathsWithoutBaseUrlRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
