@@ -22,6 +22,7 @@ import {
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
     outDirRootDirConflictRule,
+    noEmitConflictRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -46,6 +47,7 @@ const rules: Rule[] = [
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
     outDirRootDirConflictRule,
+    noEmitConflictRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
