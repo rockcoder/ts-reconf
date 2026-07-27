@@ -21,6 +21,7 @@ import {
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    noEmitConflictRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -44,6 +45,7 @@ const rules: Rule[] = [
     emitDeclarationOnlyRule,
     legacyJsxTransformCheckRule,
     declarationMapCheckRule,
+    noEmitConflictRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
