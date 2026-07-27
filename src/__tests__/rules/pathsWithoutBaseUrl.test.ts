@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { pathsWithoutBaseUrlRule } from '../../pathsWithoutBaseUrl.js';
+import { pathsWithoutBaseUrlRule } from '../../rules/pathsWithoutBaseUrl.js';
 import type { AnalysisContext } from '../../types.js';
 
 describe('pathsWithoutBaseUrl', () => {
