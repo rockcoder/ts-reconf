@@ -21,4 +21,4 @@ export { declarationMapCheckRule } from "./declarationMapCheck.js";
 export { pathsWithoutBaseUrlRule } from "./pathsWithoutBaseUrl.js";
 export { noEmitConflictRule } from "./noEmitConflict.js";
 export { outDirRootDirConflictRule } from "./outDirRootDirConflict.js";
-
+export { incrementalWithNoEmitConflictRule } from "./incrementalWithNoEmitConflict.js";
