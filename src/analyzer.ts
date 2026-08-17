@@ -24,6 +24,7 @@ import {
     pathsWithoutBaseUrlRule,
     outDirRootDirConflictRule,
     noEmitConflictRule,
+    incrementalWithNoEmitConflictRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -50,6 +51,7 @@ const rules: Rule[] = [
     pathsWithoutBaseUrlRule,
     outDirRootDirConflictRule,
     noEmitConflictRule,
+    incrementalWithNoEmitConflictRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
