@@ -25,6 +25,7 @@ import {
     outDirRootDirConflictRule,
     noEmitConflictRule,
     incrementalWithNoEmitConflictRule,
+    resolveJsonModuleCheckRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -52,6 +53,7 @@ const rules: Rule[] = [
     outDirRootDirConflictRule,
     noEmitConflictRule,
     incrementalWithNoEmitConflictRule,
+    resolveJsonModuleCheckRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
