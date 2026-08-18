@@ -26,6 +26,7 @@ import {
     noEmitConflictRule,
     incrementalWithNoEmitConflictRule,
     resolveJsonModuleCheckRule,
+    sourcemapConflictRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -54,6 +55,7 @@ const rules: Rule[] = [
     noEmitConflictRule,
     incrementalWithNoEmitConflictRule,
     resolveJsonModuleCheckRule,
+    sourcemapConflictRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

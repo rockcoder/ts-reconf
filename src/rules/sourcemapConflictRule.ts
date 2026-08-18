@@ -35,16 +35,6 @@ export const sourcemapConflictRule: Rule = {
             });
         }
 
-        // declarationMap requires declaration to be enabled
-        if (declarationMap && !declaration) {
-            findings.push({
-                ruleId: ruleId,
-                severity: "error",
-                message: `"declarationMap" is enabled but "declaration" is false or unset. declarationMap requires "declaration": true so that .d.ts files are emitted. Enable "declaration" or disable "declarationMap".`,
-                category: "conflict"
-            });
-        }
-
         // If declarationMap is enabled alongside inlineSourceMap, warn: declaration maps are separate files
         if (declarationMap && inlineSourceMap) {
             findings.push({
