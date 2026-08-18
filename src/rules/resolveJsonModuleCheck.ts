@@ -1,3 +1,5 @@
+import { ModuleResolutionKind } from "typescript";
+
 import type { Rule, Finding, AnalysisContext } from "../types.js";
 
 const ruleId = "ts.resolveJsonModule.check";
@@ -21,7 +23,7 @@ export const resolveJsonModuleCheckRule: Rule = {
         const findings: Finding[] = [];
 
         // Suggest enabling resolveJsonModule with modern module resolution
-        if (!resolveJsonModule && moduleResolution && moduleResolution !== "classic") {
+        if (!resolveJsonModule && moduleResolution && moduleResolution !== ModuleResolutionKind.Classic) {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",
@@ -31,30 +33,12 @@ export const resolveJsonModuleCheckRule: Rule = {
         }
 
         // Warn if resolveJsonModule is enabled with classic/outdated resolution
-        if (resolveJsonModule && moduleResolution === "classic") {
+        if (resolveJsonModule && moduleResolution === ModuleResolutionKind.Classic) {
             findings.push({
                 ruleId: ruleId,
                 severity: "warn",
                 message: `"resolveJsonModule" is enabled but "moduleResolution" is set to "classic", which is outdated. Modern module resolution (like "node", "bundler", or "nodenext") is recommended for JSON imports to work reliably.`,
                 category: "conflict"
-            });
-        }
-
-        // Inform about resolveJsonModule when it's enabled
-        if (resolveJsonModule) {
-            const details = [];
-            
-            if (!allowJs) {
-                details.push("JSON imports work with TypeScript files");
-            } else {
-                details.push("JSON imports work with both TypeScript and JavaScript files");
-            }
-            
-            findings.push({
-                ruleId: ruleId,
-                severity: "info",
-                message: `"resolveJsonModule" is enabled. This allows importing JSON files as ES modules (e.g., \`import config from './config.json';\`). ${details.join(" and ")} Ensure your bundler supports this if necessary.`,
-                category: "explanation"
             });
         }
 
