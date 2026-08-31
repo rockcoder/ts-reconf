@@ -24,3 +24,4 @@ export { outDirRootDirConflictRule } from "./outDirRootDirConflict.js";
 export { incrementalWithNoEmitConflictRule } from "./incrementalWithNoEmitConflict.js";
 export { resolveJsonModuleCheckRule } from "./resolveJsonModuleCheck.js";
 export { sourcemapConflictRule } from "./sourcemapConflictRule.js";
+export { isolatedDeclarationsCheckRule } from "./isolatedDeclarationsCheck.js";
