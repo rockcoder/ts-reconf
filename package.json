@@ -41,7 +41,7 @@
     "typescript": "6.0.3"
   },
   "devDependencies": {
-    "@types/node": "26.2.0",
+    "@types/node": "26.4.1",
     "@vitest/coverage-v8": "4.1.11",
     "tsx": "4.23.13",
     "vitest": "4.1.11"
