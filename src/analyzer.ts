@@ -35,6 +35,7 @@ import {
     projectReferencesOutputRule,
     modulePackageTypeRule,
     importingTsExtensionsRule,
+    performanceOptionsRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -72,6 +73,7 @@ const rules: Rule[] = [
     projectReferencesOutputRule,
     modulePackageTypeRule,
     importingTsExtensionsRule,
+    performanceOptionsRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
