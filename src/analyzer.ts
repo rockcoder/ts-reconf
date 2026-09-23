@@ -33,6 +33,7 @@ import {
     rootDirIncludeRule,
     compositeRequirementsRule,
     projectReferencesOutputRule,
+    modulePackageTypeRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -68,6 +69,7 @@ const rules: Rule[] = [
     rootDirIncludeRule,
     compositeRequirementsRule,
     projectReferencesOutputRule,
+    modulePackageTypeRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

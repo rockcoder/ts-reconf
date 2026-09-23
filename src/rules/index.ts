@@ -30,3 +30,4 @@ export { includeExcludeOverlapRule } from "./includeExcludeOverlap.js";
 export { rootDirIncludeRule } from "./rootDirInclude.js";
 export { compositeRequirementsRule } from "./compositeRequirements.js";
 export { projectReferencesOutputRule } from "./projectReferencesOutput.js";
+export { modulePackageTypeRule } from "./modulePackageType.js";
