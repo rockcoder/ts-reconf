@@ -29,6 +29,7 @@ import {
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
     extendsCheckRule,
+    includeExcludeOverlapRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -60,6 +61,7 @@ const rules: Rule[] = [
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
     extendsCheckRule,
+    includeExcludeOverlapRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

@@ -26,3 +26,4 @@ export { resolveJsonModuleCheckRule } from "./resolveJsonModuleCheck.js";
 export { sourcemapConflictRule } from "./sourcemapConflictRule.js";
 export { isolatedDeclarationsCheckRule } from "./isolatedDeclarationsCheck.js";
 export { extendsCheckRule } from "./extendsCheck.js";
+export { includeExcludeOverlapRule } from "./includeExcludeOverlap.js";
