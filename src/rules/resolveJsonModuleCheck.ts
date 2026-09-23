@@ -17,6 +17,10 @@ export const resolveJsonModuleCheckRule: Rule = {
         const options = config.compilerOptions ?? {};
         const resolveJsonModule = options.resolveJsonModule;
         const moduleResolution = options.moduleResolution;
+        const moduleResolutionName =
+            moduleResolution === undefined
+                ? undefined
+                : ModuleResolutionKind[moduleResolution];
         const esModuleInterop = options.esModuleInterop;
         const allowJs = options.allowJs;
 
@@ -27,7 +31,7 @@ export const resolveJsonModuleCheckRule: Rule = {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",
-                message: `Consider enabling "resolveJsonModule": true. Modern projects using ${moduleResolution} module resolution typically benefit from being able to import JSON files directly (e.g., package.json, config files). This improves type safety and reduces dynamic require() calls.`,
+                message: `Consider enabling "resolveJsonModule": true. Modern projects using ${moduleResolutionName} module resolution typically benefit from being able to import JSON files directly (e.g., package.json, config files). This improves type safety and reduces dynamic require() calls.`,
                 category: "suggestion"
             });
         }
