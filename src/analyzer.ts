@@ -28,6 +28,7 @@ import {
     resolveJsonModuleCheckRule,
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
+    extendsCheckRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -58,6 +59,7 @@ const rules: Rule[] = [
     resolveJsonModuleCheckRule,
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
+    extendsCheckRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

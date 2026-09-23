@@ -24,7 +24,10 @@ export interface AnalysisContext {
         files?: string[];
         extends?: string;
         compileOnSave?: boolean;
+        references?: Array<{ path: string }>;
     };
+    configPath?: string;
+    fileNames?: string[];
 }
 
 export interface Rule {
