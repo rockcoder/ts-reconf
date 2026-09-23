@@ -30,6 +30,7 @@ import {
     isolatedDeclarationsCheckRule,
     extendsCheckRule,
     includeExcludeOverlapRule,
+    rootDirIncludeRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -62,6 +63,7 @@ const rules: Rule[] = [
     isolatedDeclarationsCheckRule,
     extendsCheckRule,
     includeExcludeOverlapRule,
+    rootDirIncludeRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
