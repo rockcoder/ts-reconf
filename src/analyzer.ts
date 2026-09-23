@@ -32,6 +32,7 @@ import {
     includeExcludeOverlapRule,
     rootDirIncludeRule,
     compositeRequirementsRule,
+    projectReferencesOutputRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -66,6 +67,7 @@ const rules: Rule[] = [
     includeExcludeOverlapRule,
     rootDirIncludeRule,
     compositeRequirementsRule,
+    projectReferencesOutputRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
