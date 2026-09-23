@@ -1,13 +1,14 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { loadTsConfig } from '../loadTsConfig.js';
-import { writeFileSync, mkdirSync, rmSync } from 'fs';
+import { writeFileSync, mkdtempSync, rmSync } from 'fs';
 import { join } from 'path';
+import { tmpdir } from 'os';
 
 describe('loadTsConfig', () => {
-  const testDir = join(process.cwd(), '.test-tsconfig');
+  let testDir: string;
 
   beforeEach(() => {
-    mkdirSync(testDir, { recursive: true });
+    testDir = mkdtempSync(join(tmpdir(), 'ts-reconf-'));
   });
 
   afterEach(() => {
