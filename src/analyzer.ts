@@ -34,6 +34,7 @@ import {
     compositeRequirementsRule,
     projectReferencesOutputRule,
     modulePackageTypeRule,
+    importingTsExtensionsRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -70,6 +71,7 @@ const rules: Rule[] = [
     compositeRequirementsRule,
     projectReferencesOutputRule,
     modulePackageTypeRule,
+    importingTsExtensionsRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {
