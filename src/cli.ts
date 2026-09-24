@@ -3,20 +3,13 @@
 import { loadTsConfig } from "./loadTsConfig.js";
 import { analyze } from "./analyzer.js";
 import { toMarkdown, toPrettyOutput } from "./reporter.js";
-
-const [, , command, fileArg] = process.argv;
-
-if (command !== "analyze" && fileArg) {
-    console.log("Usage: ts-reconf analyze [tsconfig.json]");
-    process.exit(1);
-}
-
-const file = fileArg ?? (command?.endsWith(".json") ? command : undefined) ?? "tsconfig.json";
+import { parseCliArgs } from "./cliArgs.js";
 
 try {
+    const args = parseCliArgs(process.argv.slice(2));
 
     // --version or -v
-    if (process.argv.includes("--version") || process.argv.includes("-v")) {
+    if (args.version) {
         const pkg = await import("../package.json", {
             with: { type: "json" }
         });
@@ -25,7 +18,7 @@ try {
     }
 
     // --help or -h
-    if (process.argv.includes("--help") || process.argv.includes("-h")) {
+    if (args.help) {
         console.log("Usage: ts-reconf analyze [tsconfig.json]");
         console.log("Options:");
         console.log("  --help, -h                   Show help");
@@ -34,14 +27,14 @@ try {
         process.exit(0);
     }
 
-    const config = loadTsConfig(file);
+    const config = loadTsConfig(args.file);
 
     const findings = analyze(config);
 
     // `--output-pretty` (default) or `--output-markdown`
-    const compactOutput = process.argv.includes("--output-markdown") || process.argv.includes("-o-md");
+    const compactOutput = args.outputMarkdown;
 
-    const report = compactOutput ? toMarkdown(findings, file) : toPrettyOutput(findings, file);
+    const report = compactOutput ? toMarkdown(findings, args.file) : toPrettyOutput(findings, args.file);
 
     console.log(report);
 

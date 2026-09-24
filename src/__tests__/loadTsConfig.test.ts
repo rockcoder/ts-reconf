@@ -1,13 +1,14 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { loadTsConfig } from '../loadTsConfig.js';
-import { writeFileSync, mkdirSync, rmSync } from 'fs';
+import { writeFileSync, mkdtempSync, rmSync } from 'fs';
 import { join } from 'path';
+import { tmpdir } from 'os';
 
 describe('loadTsConfig', () => {
-  const testDir = join(process.cwd(), '.test-tsconfig');
+  let testDir: string;
 
   beforeEach(() => {
-    mkdirSync(testDir, { recursive: true });
+    testDir = mkdtempSync(join(tmpdir(), 'ts-reconf-'));
   });
 
   afterEach(() => {
@@ -70,6 +71,17 @@ describe('loadTsConfig', () => {
     expect(() => loadTsConfig(configPath)).toThrow();
   });
 
+  it('should throw error for invalid compiler options', () => {
+    const configPath = join(testDir, 'tsconfig.json');
+    writeFileSync(configPath, JSON.stringify({
+      compilerOptions: {
+        target: 'not-a-target',
+      },
+    }));
+
+    expect(() => loadTsConfig(configPath)).toThrow(/Invalid tsconfig/);
+  });
+
   it('should throw error for missing file', () => {
     const configPath = join(testDir, 'nonexistent.json');
 
@@ -78,6 +90,7 @@ describe('loadTsConfig', () => {
 
   it('should handle extends property in raw config', () => {
     const configPath = join(testDir, 'tsconfig.json');
+    writeFileSync(join(testDir, 'tsconfig.base.json'), JSON.stringify({}));
     writeFileSync(configPath, JSON.stringify({
       extends: './tsconfig.base.json',
       compilerOptions: { strict: true },

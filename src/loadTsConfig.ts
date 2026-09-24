@@ -23,6 +23,18 @@ export function loadTsConfig(tsconfigPath: string): AnalysisContext {
         configDir
     );
 
+    const diagnostics = parsedTSConfig.errors.filter(error => error.code !== 18003);
+
+    if (diagnostics.length > 0) {
+        const messages = diagnostics
+            .map(error =>
+                ts.flattenDiagnosticMessageText(error.messageText, "\n")
+            )
+            .join("\n");
+
+        throw new Error(`Invalid tsconfig: ${messages}`);
+    }
+
     return {
         compilerOptions: parsedTSConfig.options,
         rawConfig: configFile.config

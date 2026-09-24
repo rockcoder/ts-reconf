@@ -3,10 +3,10 @@ import type { Rule, Finding, AnalysisContext } from "../types.js";
 const ruleId = "ts.paths-baseurl.conflict";
 
 /**
- * Checks for incomplete path configuration:
- * - Warns if paths is set but baseUrl is not (paths require baseUrl to work)
- * - Suggests setting baseUrl when paths is detected
- * - Detects if baseUrl is set but paths is not (potentially unused baseUrl)
+ * Checks for potentially unnecessary baseUrl configuration.
+ *
+ * TypeScript resolves paths relative to the config file when baseUrl is
+ * omitted, so paths alone is valid in modern TypeScript.
  */
 export const pathsWithoutBaseUrlRule: Rule = {
     id: ruleId,
@@ -17,17 +17,6 @@ export const pathsWithoutBaseUrlRule: Rule = {
         const baseUrl = options.baseUrl;
 
         const findings: Finding[] = [];
-
-        // Check if paths is set without baseUrl
-        if (paths && Object.keys(paths).length > 0 && !baseUrl) {
-            findings.push({
-                ruleId: ruleId,
-                severity: "error",
-                message: `paths is configured but baseUrl is not set. The paths option requires baseUrl to be set to work correctly. Add "baseUrl": "." to your compilerOptions.`,
-                category: "conflict"
-            });
-            return findings;
-        }
 
         // Check if baseUrl is set without paths (softer suggestion)
         if (baseUrl && (!paths || Object.keys(paths).length === 0)) {

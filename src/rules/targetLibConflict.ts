@@ -17,12 +17,16 @@ const TARGET_ORDER: Record<string, number> = {
     "es2022": 9,
     "es2023": 10,
     "es2024": 11,
+    "es2025": 12,
     "esnext": 99,
     "latest": 99,
 };
 
 function normalize(value: string): string {
-    return value.toLowerCase();
+    return value
+        .toLowerCase()
+        .replace(/^lib\./, "")
+        .replace(/\.d\.ts$/, "");
 }
 
 function getTargetIndex(target?: string): number {
@@ -39,7 +43,7 @@ function extractLibVersions(libs: string[]): string[] {
     }
 
     return libs
-        .map(lib => lib.toLowerCase())
+        .map(normalize)
         .filter(lib => lib.startsWith("es"));
 }
 
@@ -67,7 +71,7 @@ export const targetLibConflictRule: Rule = {
         const target = options.target;
         const libs = options.lib;
 
-        if (!target || !libs) {
+        if (target === undefined || !libs) {
             return [];
         }
 

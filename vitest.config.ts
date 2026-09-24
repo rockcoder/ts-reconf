@@ -14,7 +14,7 @@ export default defineConfig({
       statements: 80,
       exclude: [
         'node_modules/',
-        'dist/',
+        '**/dist/**',
         '**/*.config.ts',
       ]
     }

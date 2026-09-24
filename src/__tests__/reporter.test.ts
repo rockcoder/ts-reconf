@@ -91,6 +91,14 @@ describe('Reporter', () => {
       expect(output).toContain('my-tsconfig.json');
     });
 
+    it('should not reorder the findings array', () => {
+      const findings = [...mockFindings];
+
+      toPrettyOutput(findings);
+
+      expect(findings).toEqual(mockFindings);
+    });
+
     it('should have visual separators', () => {
       const output = toPrettyOutput(mockFindings);
 

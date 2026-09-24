@@ -30,7 +30,7 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should detect error when paths is set but baseUrl is not', () => {
+  it('should allow paths without baseUrl', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         paths: {
@@ -42,9 +42,7 @@ describe('pathsWithoutBaseUrl', () => {
     };
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
-    expect(findings).toHaveLength(1);
-    expect(findings[0]?.severity).toBe('error');
-    expect(findings[0]?.category).toBe('conflict');
+    expect(findings).toHaveLength(0);
   });
 
   it('should detect suggestion when baseUrl is set but paths is not', () => {
@@ -80,12 +78,10 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings[0]?.message).toContain('baseUrl is set to "src"');
   });
 
-  it('should have correct rule id', () => {
+  it('should have correct rule id for baseUrl findings', () => {
     const config: AnalysisContext = {
       compilerOptions: {
-        paths: {
-          '@/*': ['src/*'],
-        },
+        baseUrl: '.',
       },
       rawConfig: {},
     };
@@ -106,39 +102,6 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should list multiple path aliases in error message', () => {
-    const config: AnalysisContext = {
-      compilerOptions: {
-        paths: {
-          '@/*': ['src/*'],
-          '@components/*': ['src/components/*'],
-          '@utils/*': ['src/utils/*'],
-          '@types/*': ['src/types/*'],
-        },
-      },
-      rawConfig: {},
-    };
-
-    const findings = pathsWithoutBaseUrlRule.analyze(config);
-
-    expect(findings).toHaveLength(1);
-  });
-
-  it('should suggest adding baseUrl in error message', () => {
-    const config: AnalysisContext = {
-      compilerOptions: {
-        paths: {
-          '@/*': ['src/*'],
-        },
-      },
-      rawConfig: {},
-    };
-
-    const findings = pathsWithoutBaseUrlRule.analyze(config);
-
-    expect(findings[0]?.message).toContain('"baseUrl": "."');
-  });
-
   it('should only suggest removing baseUrl if paths is truly empty', () => {
     const config: AnalysisContext = {
       compilerOptions: {
@@ -154,7 +117,7 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings[0]?.message).toContain('remove baseUrl to simplify');
   });
 
-  it('should return error not suggestion when paths is set without baseUrl', () => {
+  it('should not report a conflict when paths is set with baseUrl', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         baseUrl: '.',

@@ -26,7 +26,7 @@ export function toMarkdown(findings: Finding[], file?: string): string {
 function groupByCategory(findings: Finding[]): Record<string, Finding[]> {
     const groups: Record<string, Finding[]> = {};
 
-    for (const finding of findings.sort((a, b) => a.category.localeCompare(b.category))) {
+    for (const finding of [...findings].sort((a, b) => a.category.localeCompare(b.category))) {
         if (!groups[finding.category]) {
             groups[finding.category] = [];
         }
@@ -39,7 +39,7 @@ function groupByCategory(findings: Finding[]): Record<string, Finding[]> {
 export function toPrettyOutput(findings: Finding[], file?: string): string {
     const lines: string[] = [];
 
-    lines.push(`\n## ¸'ts-reconf' Analyzing ${file ?? "tsconfig.json"}...`);
+    lines.push(`\n## ts-reconf Analyzing ${file ?? "tsconfig.json"}...`);
 
     if (findings.length === 0) {
         lines.push(NO_ISSUES_FOUND_MSG);
