@@ -37,6 +37,8 @@ export function loadTsConfig(tsconfigPath: string): AnalysisContext {
 
     return {
         compilerOptions: parsedTSConfig.options,
-        rawConfig: configFile.config
+        rawConfig: configFile.config,
+        configPath: path.resolve(tsconfigPath),
+        fileNames: parsedTSConfig.fileNames,
     };
 }

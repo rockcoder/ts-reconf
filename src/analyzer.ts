@@ -28,6 +28,14 @@ import {
     resolveJsonModuleCheckRule,
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
+    extendsCheckRule,
+    includeExcludeOverlapRule,
+    rootDirIncludeRule,
+    compositeRequirementsRule,
+    projectReferencesOutputRule,
+    modulePackageTypeRule,
+    importingTsExtensionsRule,
+    performanceOptionsRule,
 } from "./rules/index.js";
 
 const rules: Rule[] = [
@@ -58,6 +66,14 @@ const rules: Rule[] = [
     resolveJsonModuleCheckRule,
     sourcemapConflictRule,
     isolatedDeclarationsCheckRule,
+    extendsCheckRule,
+    includeExcludeOverlapRule,
+    rootDirIncludeRule,
+    compositeRequirementsRule,
+    projectReferencesOutputRule,
+    modulePackageTypeRule,
+    importingTsExtensionsRule,
+    performanceOptionsRule,
 ];
 
 export function analyze(config: AnalysisContext): Finding[] {

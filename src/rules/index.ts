@@ -25,3 +25,11 @@ export { incrementalWithNoEmitConflictRule } from "./incrementalWithNoEmitConfli
 export { resolveJsonModuleCheckRule } from "./resolveJsonModuleCheck.js";
 export { sourcemapConflictRule } from "./sourcemapConflictRule.js";
 export { isolatedDeclarationsCheckRule } from "./isolatedDeclarationsCheck.js";
+export { extendsCheckRule } from "./extendsCheck.js";
+export { includeExcludeOverlapRule } from "./includeExcludeOverlap.js";
+export { rootDirIncludeRule } from "./rootDirInclude.js";
+export { compositeRequirementsRule } from "./compositeRequirements.js";
+export { projectReferencesOutputRule } from "./projectReferencesOutput.js";
+export { modulePackageTypeRule } from "./modulePackageType.js";
+export { importingTsExtensionsRule } from "./importingTsExtensions.js";
+export { performanceOptionsRule } from "./performanceOptions.js";
