@@ -9,4 +9,5 @@ describe("importingTsExtensions", () => {
         });
         expect(findings[0]?.severity).toBe("error");
     });
+
 });

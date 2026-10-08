@@ -36,16 +36,6 @@ export const resolveJsonModuleCheckRule: Rule = {
             });
         }
 
-        // Warn if resolveJsonModule is enabled with classic/outdated resolution
-        if (resolveJsonModule && moduleResolution === ModuleResolutionKind.Classic) {
-            findings.push({
-                ruleId: ruleId,
-                severity: "warn",
-                message: `"resolveJsonModule" is enabled but "moduleResolution" is set to "classic", which is outdated. Modern module resolution (like "node", "bundler", or "nodenext") is recommended for JSON imports to work reliably.`,
-                category: "conflict"
-            });
-        }
-
         return findings;
     }
 };
