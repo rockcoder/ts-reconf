@@ -14,7 +14,6 @@ const legacyOptions: (keyof CompilerOptions)[] = [
     "preserveValueImports",
     "suppressExcessPropertyErrors",
     "suppressImplicitAnyIndexErrors",
-    "skipDefaultLibCheck",
 ];
 
 
@@ -42,10 +41,7 @@ function getAdditionalInfo(opt: keyof CompilerOptions): string {
             return " (consider using @ts-ignore comment instead)";
         case "importsNotUsedAsValues":
             return " (Deprecated in favor of verbatimModuleSyntax)";
-        case "skipDefaultLibCheck":
-            return " (use 'skipLibCheck' instead)";
         default:
             return "";
     }
 }
-
