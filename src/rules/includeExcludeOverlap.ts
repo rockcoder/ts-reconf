@@ -18,9 +18,9 @@ export const includeExcludeOverlapRule: Rule = {
             .filter(include => excludes.some(exclude => isExcluded(include, exclude)))
             .map(include => ({
                 ruleId,
-                severity: "warn" as const,
-                category: "conflict" as const,
-                message: `The include pattern "${include}" is covered by an exclude pattern. It may match no files.`,
+                severity: "info" as const,
+                category: "suggestion" as const,
+                message: `The include pattern "${include}" appears to overlap an exclude pattern. This is a simple pattern check; review the resolved file list to confirm whether any files are excluded unintentionally.`,
             }));
     },
 };

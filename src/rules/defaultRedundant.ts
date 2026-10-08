@@ -26,7 +26,8 @@ const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     allowImportingTsExtensions: false,
     allowUmdGlobalAccess: false,
     noResolve: false,
-    noUncheckedSideEffectImports: false,
+    noUncheckedSideEffectImports: true,
+    libReplacement: false,
     resolveJsonModule: false,
     rewriteRelativeImportExtensions: false,
     // Interop Constraints
@@ -43,7 +44,7 @@ const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     emitDecoratorMetadata: false,
     experimentalDecorators: false,
     noLib: false,
-    target: "es5",
+    target: "es2025",
 };
 
 function isEqual(a: unknown, b: unknown): boolean {

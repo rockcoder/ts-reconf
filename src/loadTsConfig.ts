@@ -23,7 +23,12 @@ export function loadTsConfig(tsconfigPath: string): AnalysisContext {
         configDir
     );
 
-    const diagnostics = parsedTSConfig.errors.filter(error => error.code !== 18003);
+    // Let the analyzer explain deprecated compiler options itself. TypeScript
+    // reports these as config errors in newer releases, but aborting here would
+    // prevent rules such as legacyOption and pathsWithoutBaseUrl from running.
+    const diagnostics = parsedTSConfig.errors.filter(
+        error => error.code !== 18003 && error.code !== 5101 && error.code !== 5107
+    );
 
     if (diagnostics.length > 0) {
         const messages = diagnostics

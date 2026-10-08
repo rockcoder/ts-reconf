@@ -17,7 +17,7 @@ export const noEmitOutDirCheckRule: Rule = {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",
-                message: `The "noEmit" option is enabled, but "outDir" is also set. No files will be emitted, so outDir has no effect. Consider removing one of these options.`,
+                message: `"noEmit" is enabled, so "outDir" (${outDir}) is unused for this invocation. This can be intentional in a shared config.`,
                 category: "explanation"
             });
         }

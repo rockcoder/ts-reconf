@@ -13,8 +13,8 @@ export const verbatimModuleSyntaxCheckRule: Rule = {
         if (compilerOptions.module && [ModuleKind.NodeNext, ModuleKind.Node16, ModuleKind.ESNext].includes(compilerOptions.module) && !compilerOptions.verbatimModuleSyntax) {
             findings.push({
                 ruleId: ruleId,
-                severity: "warn",
-                message: `The "verbatimModuleSyntax" is not enabled, but the module kind is set to a value that requires it. Modern ESM projects benefit from preserving import/export syntax. This avoids TypeScript rewriting imports unexpectedly. Consider enabling "verbatimModuleSyntax": true.`,
+                severity: "info",
+                message: `"verbatimModuleSyntax" is not enabled. It is optional, but can make ESM import and export emit more predictable by preserving syntax without type modifiers. Consider enabling it if that matches your toolchain.`,
                 category: "suggestion"
             });
         }
