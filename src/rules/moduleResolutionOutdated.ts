@@ -23,12 +23,12 @@ export const moduleResolutionOutdatedRule: Rule = {
         }
 
         const target = options.target;
-        if (target === ScriptTarget.ES5) {
+        if (target === ScriptTarget.ES3 || target === ScriptTarget.ES5) {
             findings.push({
                 ruleId: ruleId,
                 category: "suggestion",
                 severity: "warn",
-                message: `"target": "ES5" is deprecated in TypeScript 6.0. Choose a target supported by your runtime, or use another compiler if you need ES5 output.`,
+                message: `"target": "${ScriptTarget[target]}" is deprecated in TypeScript 6.0. Choose a target supported by your runtime, or use another compiler if you need legacy output.`,
             });
         }
 

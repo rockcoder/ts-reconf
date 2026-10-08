@@ -9,11 +9,11 @@ export const forceConsistentCasingInFileNamesRule: Rule = {
         const compilerOptions = config.compilerOptions ?? {};
         const findings: Finding[] = [];
 
-        if (!compilerOptions.forceConsistentCasingInFileNames) {
+        if (compilerOptions.forceConsistentCasingInFileNames === false) {
             findings.push({
                 ruleId: ruleId,
                 severity: "warn",
-                message: `"forceConsistentCasingInFileNames" is not enabled. Consider enabling it to catch cross-platform casing issues early.`,
+                message: `"forceConsistentCasingInFileNames" is explicitly disabled. Consider enabling it to catch cross-platform casing issues early.`,
                 category: "suggestion"
             });
         }
