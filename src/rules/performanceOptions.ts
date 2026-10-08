@@ -7,6 +7,15 @@ export const performanceOptionsRule: Rule = {
     analyze(config: AnalysisContext): Finding[] {
         const findings: Finding[] = [];
         const options = config.compilerOptions;
+        const raw = config.rawConfig;
+        if (!raw.include && !raw.files && !raw.exclude) {
+            findings.push({
+                ruleId,
+                severity: "info",
+                category: "suggestion",
+                message: `No include/files scope is configured. TypeScript may scan the whole project; narrowing the input scope can improve startup and watch performance.`,
+            });
+        }
         if (options.preserveWatchOutput && !options.watch) {
             findings.push({
                 ruleId,

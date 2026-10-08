@@ -22,8 +22,9 @@ export const legacyOptionRule: Rule = {
 
     analyze(config: AnalysisContext): Finding[] {
         const compilerOptions = config.compilerOptions;
+        const rawCompilerOptions = config.rawConfig.compilerOptions ?? {};
         return legacyOptions
-            .filter(opt => opt in compilerOptions)
+            .filter(opt => opt in compilerOptions || opt in rawCompilerOptions)
             .map(opt => ({
                 ruleId: ruleId,
                 severity: "warn",

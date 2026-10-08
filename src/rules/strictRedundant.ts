@@ -10,7 +10,8 @@ export const strictRedundantRule: Rule = {
     analyze(config: AnalysisContext): Finding[] {
         const compilerOptions = config.compilerOptions ?? {};
 
-        if (!compilerOptions.strict) return [];
+        // TypeScript 6 defaults strict to true unless explicitly disabled.
+        if (compilerOptions.strict === false) return [];
 
         const setByStrictOptions: (keyof CompilerOptions)[] = [
             "alwaysStrict",
