@@ -10,7 +10,6 @@ export const sourcemapConflictRule: Rule = {
         const sourceMap = options.sourceMap;
         const inlineSourceMap = options.inlineSourceMap;
         const inlineSources = options.inlineSources;
-        const declaration = options.declaration;
 
         const findings: Finding[] = [];
 

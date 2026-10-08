@@ -8,7 +8,6 @@ const ruleId = "ts.default.redundant";
  */
 const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     newLine: "lf",
-    charset: "utf8",
     moduleDetection: "auto",
     reactNamespace: "React",
     removeComments: false,
