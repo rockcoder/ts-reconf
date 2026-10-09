@@ -3,18 +3,16 @@ import type { Rule, Finding, AnalysisContext } from "../types.js";
 const ruleId = "ts.isolatedDeclarations.check";
 
 /**
- * Checks for incomplete isolated declarations configuration:
- * - Warns if isolatedDeclarations is enabled without isolatedModules
- * - Explains the complementary nature of these options
+ * Explains the relationship between isolated declarations and isolated modules.
  *
- * isolatedDeclarations: Ensures each .ts file can be type-checked independently
+ * isolatedDeclarations: Ensures each .ts file can have declarations generated independently
  * isolatedModules: Ensures each file can be safely transpiled independently
  *
  * These options serve different purposes but are complementary:
- * - isolatedDeclarations catches type safety issues (explicit annotations)
+ * - isolatedDeclarations catches declarations that need explicit annotations
  * - isolatedModules prevents transpilation errors (runtime safety)
  *
- * Both should be enabled together for maximum safety.
+ * These options are independent; some transpilers or build pipelines benefit from both.
  */
 export const isolatedDeclarationsCheckRule: Rule = {
     id: ruleId,
@@ -22,7 +20,7 @@ export const isolatedDeclarationsCheckRule: Rule = {
     analyze(config: AnalysisContext): Finding[] {
         const options = config.compilerOptions ?? {};
         const isolatedDeclarations = options.isolatedDeclarations;
-        const isolatedModules = options.isolatedModules;
+        const isolatedModules = options.isolatedModules || options.verbatimModuleSyntax;
 
         const findings: Finding[] = [];
 
@@ -30,8 +28,8 @@ export const isolatedDeclarationsCheckRule: Rule = {
         if (isolatedDeclarations && !isolatedModules) {
             findings.push({
                 ruleId: ruleId,
-                severity: "warn",
-                message: `"isolatedDeclarations" is enabled but "isolatedModules" is not. These options are complementary and should be used together: "isolatedDeclarations" ensures each file's declarations are explicit (type safety), while "isolatedModules" ensures each file can be transpiled independently (transpilation safety). Consider enabling both for maximum safety.`,
+                severity: "info",
+                message: `"isolatedDeclarations" can be used without "isolatedModules". They address different needs: isolatedDeclarations checks that declarations can be generated per file, while isolatedModules checks compatibility with single-file transpilers. Enable isolatedModules if your transpiler or build pipeline needs that check.`,
                 category: "suggestion"
             });
         }

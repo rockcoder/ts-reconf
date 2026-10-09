@@ -8,7 +8,7 @@ export const declarationMapCheckRule: Rule = {
         const compilerOptions = config.compilerOptions ?? {};
         const findings: Finding[] = [];
 
-        if (compilerOptions.declarationMap && !compilerOptions.declaration) {
+        if (compilerOptions.declarationMap && compilerOptions.declaration === false) {
             findings.push({
                 ruleId: ruleId,
                 category: "redundant",
@@ -19,5 +19,4 @@ export const declarationMapCheckRule: Rule = {
 
         return findings;
     }
-
 }

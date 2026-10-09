@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import { compositeRequirementsRule } from "../../rules/compositeRequirements.js";
 
 describe("compositeRequirements", () => {
-    it("requires declarations and emit for composite projects", () => {
+    it("accepts composite projects with implicit declarations and noEmit", () => {
         const findings = compositeRequirementsRule.analyze({
             compilerOptions: { composite: true, noEmit: true },
             rawConfig: {},
         });
-        expect(findings).toHaveLength(2);
+        expect(findings).toHaveLength(0);
     });
 });

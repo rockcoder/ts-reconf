@@ -8,20 +8,14 @@ export const compositeRequirementsRule: Rule = {
         const options = config.compilerOptions;
         if (!options.composite) return [];
         const findings: Finding[] = [];
-        if (!options.declaration) {
+        // `composite` defaults declaration generation to true. Only an explicit
+        // false value is a conflict.
+        if (options.declaration === false) {
             findings.push({
                 ruleId,
                 severity: "error",
                 category: "conflict",
                 message: `"composite": true requires declaration generation. Enable "declaration": true or disable "composite".`,
-            });
-        }
-        if (options.noEmit) {
-            findings.push({
-                ruleId,
-                severity: "error",
-                category: "conflict",
-                message: `"composite": true cannot be combined with "noEmit": true because project references require build outputs.`,
             });
         }
         return findings;

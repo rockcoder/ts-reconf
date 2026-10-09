@@ -9,11 +9,11 @@ export const allowSyntheticDefaultImportsRule: Rule = {
         const compilerOptions = config.compilerOptions ?? {};
         const findings: Finding[] = [];
 
-        if (compilerOptions.allowSyntheticDefaultImports && compilerOptions.esModuleInterop) {
+        if (compilerOptions.allowSyntheticDefaultImports && compilerOptions.esModuleInterop !== false) {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",
-                message: `"allowSyntheticDefaultImports" is unnecessary "esModuleInterop" already enables this behavior.`,
+                message: `"allowSyntheticDefaultImports" is redundant when "esModuleInterop" is enabled. Both options default to true in TypeScript 6.0.`,
                 category: "redundant"
             });
         }

@@ -17,6 +17,7 @@ describe("targetLibConflict", () => {
 
         expect(findings).toHaveLength(1);
         expect(findings[0]?.message).toContain("es2022");
+        expect(findings[0]?.severity).toBe("info");
     });
 
     it("supports current TypeScript targets", () => {

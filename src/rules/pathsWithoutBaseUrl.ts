@@ -3,27 +3,24 @@ import type { Rule, Finding, AnalysisContext } from "../types.js";
 const ruleId = "ts.paths-baseurl.conflict";
 
 /**
- * Checks for potentially unnecessary baseUrl configuration.
+ * Checks for the deprecated baseUrl option.
  *
- * TypeScript resolves paths relative to the config file when baseUrl is
- * omitted, so paths alone is valid in modern TypeScript.
+ * TypeScript 6.0 deprecates baseUrl and no longer uses it as a lookup root.
  */
 export const pathsWithoutBaseUrlRule: Rule = {
     id: ruleId,
 
     analyze(config: AnalysisContext): Finding[] {
         const options = config.compilerOptions ?? {};
-        const paths = options.paths;
         const baseUrl = options.baseUrl;
 
         const findings: Finding[] = [];
 
-        // Check if baseUrl is set without paths (softer suggestion)
-        if (baseUrl && (!paths || Object.keys(paths).length === 0)) {
+        if (baseUrl !== undefined) {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",
-                message: `baseUrl is set to "${baseUrl}" but no paths are configured. If you're not using path aliases, you can remove baseUrl to simplify your config.`,
+                message: `"baseUrl" is deprecated in TypeScript 6.0 and no longer acts as a lookup root. Remove it and make any "paths" targets relative to the tsconfig file, or add an explicit catch-all mapping if you relied on bare-specifier lookup.`,
                 category: "suggestion"
             });
         }

@@ -24,7 +24,7 @@ export const allowJsCheckRule: Rule = {
             });
         }
 
-        findings.push({
+        if (allowJs) findings.push({
             ruleId: ruleId,
             severity: "info",
             message: `The "allowJs" option is enabled, TypeScript will include .js files in compilation. Ensure this is intentional. Disable it if you are not mixing JS and TS.`,

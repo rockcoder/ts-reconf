@@ -9,7 +9,7 @@ export const noUncheckedIndexedAccessRule: Rule = {
         const compilerOptions = config.compilerOptions ?? {};
         const findings: Finding[] = [];
 
-        if (!compilerOptions.noUncheckedIndexedAccess && compilerOptions.strict) {
+        if (!compilerOptions.noUncheckedIndexedAccess && compilerOptions.strict !== false) {
             findings.push({
                 ruleId: ruleId,
                 severity: "info",

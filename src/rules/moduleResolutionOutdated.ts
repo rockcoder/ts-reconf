@@ -22,13 +22,13 @@ export const moduleResolutionOutdatedRule: Rule = {
             });
         }
 
-        const target = options.target
-        if (target !== undefined && target < ScriptTarget.ES2017) {
+        const target = options.target;
+        if (target === ScriptTarget.ES3 || target === ScriptTarget.ES5) {
             findings.push({
                 ruleId: ruleId,
                 category: "suggestion",
                 severity: "warn",
-                message: `"target" is outdated. Consider upgrading to at least "ES2017" or "ES2020". See "https://github.com/tsconfig/bases#centralized-recommendations-for-tsconfig-bases" for more details`
+                message: `"target": "${ScriptTarget[target]}" is deprecated in TypeScript 6.0. Choose a target supported by your runtime, or use another compiler if you need legacy output.`,
             });
         }
 

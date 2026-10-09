@@ -19,6 +19,7 @@ export interface Finding {
 export interface AnalysisContext {
     compilerOptions: CompilerOptions;
     rawConfig: {
+        compilerOptions?: Record<string, unknown>;
         include?: string[];
         exclude?: string[];
         files?: string[];
