@@ -19,5 +19,4 @@ export const declarationMapCheckRule: Rule = {
 
         return findings;
     }
-
 }
