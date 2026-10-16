@@ -36,7 +36,7 @@ export const legacyOptionRule: Rule = {
 
 function getAdditionalInfo(opt: keyof CompilerOptions): string {
     switch (opt) {
-        case "out": return " (use 'outFile' instead)";
+        case "out": return " (use an external bundler for bundling; TypeScript 6.0 removed 'outFile')";
         case "suppressExcessPropertyErrors":
         case "suppressImplicitAnyIndexErrors":
             return " (consider using @ts-ignore comment instead)";
