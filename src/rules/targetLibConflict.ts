@@ -93,9 +93,9 @@ export const targetLibConflictRule: Rule = {
             return [
                 {
                     ruleId: ruleId,
-                    severity: "warn",
-                    message: `target (${target}) is lower than lib (${highestLib})` + " this may cause runtime inconsistencies" + " consider aligning target and lib", // consider setting target to es2020 or lowering lib
-                    category: "conflict"
+                    severity: "info",
+                    message: `"lib" includes ${highestLib}, while "target" is ${target}. "lib" controls available type declarations but does not add runtime APIs or polyfills; verify that your runtime provides or polyfills the APIs your code uses.`,
+                    category: "explanation"
                 }
             ];
         }

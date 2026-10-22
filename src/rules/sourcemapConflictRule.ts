@@ -10,8 +10,6 @@ export const sourcemapConflictRule: Rule = {
         const sourceMap = options.sourceMap;
         const inlineSourceMap = options.inlineSourceMap;
         const inlineSources = options.inlineSources;
-        const declaration = options.declaration;
-        const declarationMap = options.declarationMap;
 
         const findings: Finding[] = [];
 
@@ -32,16 +30,6 @@ export const sourcemapConflictRule: Rule = {
                 severity: "info",
                 message: `"inlineSources" is enabled but neither "sourceMap" nor "inlineSourceMap" are enabled. "inlineSources" only has an effect when source maps are generated. Consider enabling a source map option or disabling inlineSources.`,
                 category: "explanation"
-            });
-        }
-
-        // If declarationMap is enabled alongside inlineSourceMap, warn: declaration maps are separate files
-        if (declarationMap && inlineSourceMap) {
-            findings.push({
-                ruleId: ruleId,
-                severity: "warn",
-                message: `"declarationMap" is enabled together with "inlineSourceMap". declarationMap emits separate .d.ts.map files while inlineSourceMap embeds JS source maps. This combination may be unexpected—verify whether you intended both.`,
-                category: "conflict"
             });
         }
 

@@ -14,7 +14,7 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should return no findings when both paths and baseUrl are set', () => {
+  it('should report deprecated baseUrl even when paths are set', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         baseUrl: '.',
@@ -27,7 +27,7 @@ describe('pathsWithoutBaseUrl', () => {
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
-    expect(findings).toHaveLength(0);
+    expect(findings).toHaveLength(1);
   });
 
   it('should allow paths without baseUrl', () => {
@@ -45,7 +45,7 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should detect suggestion when baseUrl is set but paths is not', () => {
+  it('should detect deprecated baseUrl when paths is not set', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         baseUrl: '.',
@@ -57,8 +57,7 @@ describe('pathsWithoutBaseUrl', () => {
 
     expect(findings).toHaveLength(1);
     expect(findings[0]?.severity).toBe('info');
-    expect(findings[0]?.message).toContain('baseUrl is set to "."');
-    expect(findings[0]?.message).toContain('no paths are configured');
+    expect(findings[0]?.message).toContain('deprecated in TypeScript 6.0');
     expect(findings[0]?.category).toBe('suggestion');
   });
 
@@ -75,7 +74,7 @@ describe('pathsWithoutBaseUrl', () => {
 
     expect(findings).toHaveLength(1);
     expect(findings[0]?.severity).toBe('info');
-    expect(findings[0]?.message).toContain('baseUrl is set to "src"');
+    expect(findings[0]?.message).toContain('deprecated in TypeScript 6.0');
   });
 
   it('should have correct rule id for baseUrl findings', () => {
@@ -102,7 +101,7 @@ describe('pathsWithoutBaseUrl', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should only suggest removing baseUrl if paths is truly empty', () => {
+  it('should explain migration even when paths is empty', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         baseUrl: '.',
@@ -114,10 +113,10 @@ describe('pathsWithoutBaseUrl', () => {
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0]?.message).toContain('remove baseUrl to simplify');
+    expect(findings[0]?.message).toContain('deprecated in TypeScript 6.0');
   });
 
-  it('should not report a conflict when paths is set with baseUrl', () => {
+  it('should report deprecated baseUrl even when paths are set', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         baseUrl: '.',
@@ -130,6 +129,6 @@ describe('pathsWithoutBaseUrl', () => {
 
     const findings = pathsWithoutBaseUrlRule.analyze(config);
 
-    expect(findings).toHaveLength(0);
+    expect(findings).toHaveLength(1);
   });
 });

@@ -8,20 +8,12 @@ export const performanceOptionsRule: Rule = {
         const findings: Finding[] = [];
         const options = config.compilerOptions;
         const raw = config.rawConfig;
-        if (!raw.include && !raw.files && !raw.exclude && !options.noResolve) {
+        if (!raw.include && !raw.files && !raw.exclude) {
             findings.push({
                 ruleId,
                 severity: "info",
                 category: "suggestion",
                 message: `No include/files scope is configured. TypeScript may scan the whole project; narrowing the input scope can improve startup and watch performance.`,
-            });
-        }
-        if (options.incremental && options.noEmit) {
-            findings.push({
-                ruleId,
-                severity: "info",
-                category: "suggestion",
-                message: `"incremental": true with "noEmit": true may add cache work without producing build outputs. Measure whether the build-info cache improves your type-checking workflow.`,
             });
         }
         if (options.preserveWatchOutput && !options.watch) {

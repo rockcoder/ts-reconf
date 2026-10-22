@@ -4,12 +4,9 @@ import type { Rule, Finding } from "../types.js";
 const ruleId = "ts.default.redundant";
 
 /**
- * Curated subset of "stable" TypeScript defaults.
+ * Curated TypeScript 6 defaults whose values are not context-dependent.
  */
-const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
-    newLine: "lf",
-    charset: "utf8",
-    moduleDetection: "auto",
+const DEFAULTS: Record<keyof CompilerOptions, boolean | string | readonly string[]> = {
     reactNamespace: "React",
     removeComments: false,
     sourceMap: false,
@@ -19,31 +16,32 @@ const DEFAULTS: Record<keyof CompilerOptions, boolean | string> = {
     skipDefaultLibCheck: false,
     // Output Formatting
     noErrorTruncation: false,
-    preserveConstEnums: false,
     pretty: true,
     // Modules
     allowArbitraryExtensions: false,
-    allowImportingTsExtensions: false,
     allowUmdGlobalAccess: false,
     noResolve: false,
-    noUncheckedSideEffectImports: false,
+    noUncheckedSideEffectImports: true,
+    libReplacement: false,
     resolveJsonModule: false,
     rewriteRelativeImportExtensions: false,
     // Interop Constraints
-    esModuleInterop: false,
+    esModuleInterop: true,
+    allowSyntheticDefaultImports: true,
     isolatedDeclarations: false,
-    isolatedModules: false,
     preserveSymlinks: false,
     verbatimModuleSyntax: false,
     // Type Checking
     noFallthroughCasesInSwitch: false,
     noImplicitOverride: false,
     noImplicitReturns: false,
+    strict: true,
+    forceConsistentCasingInFileNames: true,
+    types: [],
     // Language and Environment
     emitDecoratorMetadata: false,
     experimentalDecorators: false,
     noLib: false,
-    target: "es5",
 };
 
 function isEqual(a: unknown, b: unknown): boolean {

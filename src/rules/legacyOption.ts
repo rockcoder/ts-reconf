@@ -14,7 +14,6 @@ const legacyOptions: (keyof CompilerOptions)[] = [
     "preserveValueImports",
     "suppressExcessPropertyErrors",
     "suppressImplicitAnyIndexErrors",
-    "skipDefaultLibCheck",
 ];
 
 
@@ -23,8 +22,9 @@ export const legacyOptionRule: Rule = {
 
     analyze(config: AnalysisContext): Finding[] {
         const compilerOptions = config.compilerOptions;
+        const rawCompilerOptions = config.rawConfig.compilerOptions ?? {};
         return legacyOptions
-            .filter(opt => opt in compilerOptions)
+            .filter(opt => opt in compilerOptions || opt in rawCompilerOptions)
             .map(opt => ({
                 ruleId: ruleId,
                 severity: "warn",
@@ -36,16 +36,13 @@ export const legacyOptionRule: Rule = {
 
 function getAdditionalInfo(opt: keyof CompilerOptions): string {
     switch (opt) {
-        case "out": return " (use 'outFile' instead)";
+        case "out": return " (use an external bundler for bundling; TypeScript 6.0 removed 'outFile')";
         case "suppressExcessPropertyErrors":
         case "suppressImplicitAnyIndexErrors":
             return " (consider using @ts-ignore comment instead)";
         case "importsNotUsedAsValues":
             return " (Deprecated in favor of verbatimModuleSyntax)";
-        case "skipDefaultLibCheck":
-            return " (use 'skipLibCheck' instead)";
         default:
             return "";
     }
 }
-

@@ -12,9 +12,9 @@ export const declarationNoEmitCheckRule: Rule = {
         if (compilerOptions.declaration && compilerOptions.noEmit) {
             findings.push({
                 ruleId: ruleId,
-                severity: "warn",
-                message: `The "declaration" option is enabled, but "noEmit" is also set. No declaration files will be emitted, so "declaration" has no effect. Consider removing one of these options.`,
-                category: "redundant"
+                severity: "info",
+                message: `"noEmit" is enabled, so declaration files are not emitted for this invocation. This can be intentional in a shared config.`,
+                category: "explanation"
             });
         }
 

@@ -6,7 +6,7 @@ export const importingTsExtensionsRule: Rule = {
     id: ruleId,
     analyze(config: AnalysisContext): Finding[] {
         const options = config.compilerOptions;
-        if (!options.allowImportingTsExtensions || options.noEmit || options.emitDeclarationOnly) return [];
+        if (!options.allowImportingTsExtensions || options.noEmit || options.emitDeclarationOnly || options.rewriteRelativeImportExtensions) return [];
         return [{
             ruleId,
             severity: "error",

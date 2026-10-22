@@ -28,7 +28,7 @@ describe('isolatedDeclarationsCheck', () => {
     expect(findings).toHaveLength(0);
   });
 
-  it('should warn when isolatedDeclarations is true but isolatedModules is false', () => {
+  it('should explain the independent options when isolatedDeclarations is true but isolatedModules is false', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         isolatedDeclarations: true,
@@ -40,11 +40,11 @@ describe('isolatedDeclarationsCheck', () => {
     const findings = isolatedDeclarationsCheckRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0]?.severity).toBe('warn');
+    expect(findings[0]?.severity).toBe('info');
     expect(findings[0]?.category).toBe('suggestion');
   });
 
-  it('should warn when isolatedDeclarations is true but isolatedModules is not set', () => {
+  it('should explain the independent options when isolatedModules is not set', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         isolatedDeclarations: true,
@@ -55,7 +55,7 @@ describe('isolatedDeclarationsCheck', () => {
     const findings = isolatedDeclarationsCheckRule.analyze(config);
 
     expect(findings).toHaveLength(1);
-    expect(findings[0]?.severity).toBe('warn');
+    expect(findings[0]?.severity).toBe('info');
   });
 
   it('should mention both options in the warning message', () => {
@@ -72,7 +72,7 @@ describe('isolatedDeclarationsCheck', () => {
     expect(findings[0]?.message).toContain('isolatedModules');
   });
 
-  it('should explain the complementary nature of the options', () => {
+  it('should explain the different purposes of the options', () => {
     const config: AnalysisContext = {
       compilerOptions: {
         isolatedDeclarations: true,
@@ -82,8 +82,8 @@ describe('isolatedDeclarationsCheck', () => {
 
     const findings = isolatedDeclarationsCheckRule.analyze(config);
 
-    expect(findings[0]?.message).toContain('type safety');
-    expect(findings[0]?.message).toContain('transpilation safety');
+    expect(findings[0]?.message).toContain('declarations');
+    expect(findings[0]?.message).toContain('single-file transpilers');
   });
 
   it('should have correct rule id', () => {

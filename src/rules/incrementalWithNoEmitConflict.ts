@@ -3,10 +3,7 @@ import type { Rule, Finding, AnalysisContext } from "../types.js";
 const ruleId = "ts.incremental.noemit.conflict";
 
 /**
- * Checks for conflicting incremental and noEmit settings:
- * - Warns if incremental is true but noEmit is also true (pointless cache)
- * The incremental build cache (.tsbuildinfo) is only useful when files are emitted.
- * With noEmit, the cache is wasted and should be disabled.
+ * Explains that incremental checking can also be useful with noEmit.
  */
 export const incrementalWithNoEmitConflictRule: Rule = {
     id: ruleId,
@@ -22,9 +19,9 @@ export const incrementalWithNoEmitConflictRule: Rule = {
 
         return [{
             ruleId: ruleId,
-            severity: "warn",
-            message: `incremental is enabled but noEmit is true. The incremental build cache (.tsbuildinfo) is only useful when files are emitted. With noEmit, the incremental cache provides no benefit and wastes disk space. Either disable incremental or disable noEmit if you want faster rebuilds.`,
-            category: "conflict"
+            severity: "info",
+            message: `"incremental" is enabled with "noEmit". TypeScript can still cache type-checking information in this mode; keep it if it improves repeated checks.`,
+            category: "explanation"
         }];
     }
 };
